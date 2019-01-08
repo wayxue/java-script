@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>accuracy calculating</title>
+<script src="../js/calculate.js"></script>
+<style>
+	table td{
+		border:1px solid #45d865;
+ 		padding:5px 15px;
+ 		text-align: center;
+	}
+	.centerDate {
+	    border: 0px;
+    	text-align: center;
+    	outline: none;
+	}
+</style>
+</head>
+<body>
+<div>
+<!-- 	<form action=""> -->
+		<table style="border-collapse:collapse;" width="18px" height="5px">
+			<thead>
+				<tr>
+					<td>first number</td>
+					<td>second number</td>
+					<td>add</td>
+					<td>subtract</td>
+					<td>multiply</td>
+					<td>divide</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input id="first" type="text" class="centerDate"/></td>
+					<td><input id="second" type="text" class="centerDate"/></td>
+					<td><input id="add" type="text" readonly="readonly" class="centerDate"/></td>
+					<td><input id="subtract" type="text" readonly="readonly" class="centerDate"/></td>
+					<td><input id="multiply" type="text" readonly="readonly" class="centerDate"/></td>
+					<td><input id="divide" type="text" readonly="readonly" class="centerDate"/></td>
+				</tr>
+			</tbody>
+		</table>
+		<button onclick="calc()" 
+			style="background:#49c7be;font-size:14px;color:#fff;text-align:center;border:1px solid #49c7be;cursor:pointer;margin-top:20px;">
+			calculate</button>
+<!-- 	</form> -->
+</div>
+</body>
+<script>
+	function calc() {
+		var first = document.getElementById("first");
+		var second = document.getElementById("second");
+		if (first.value == "" || second.value == "") {
+			alert("输入两个数字，进行计算");
+			return ;
+		}
+		var firstValue = first.value;
+		var secondValue = second.value;
+		var addDom = document.getElementById("add");
+		addDom.value = add(firstValue, secondValue);
+		var subtractDom = document.getElementById("subtract");
+		subtractDom.value = subtract(firstValue, secondValue);
+		var multiplyDom = document.getElementById("multiply");
+		multiplyDom.value = multiply(firstValue, secondValue);
+		var divideDom = document.getElementById("divide");
+		divideDom.value = divide(firstValue, secondValue);
+	}
+</script>
+</html>
