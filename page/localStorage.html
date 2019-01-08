@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>local storage</title>
+<style type="text/css">
+	.btn {
+		background:#49c7be;
+		font-size:14px;
+		color:#fff;
+		text-align:center;
+		border:1px solid #49c7be;
+		cursor:pointer;
+		margin-top:20px;
+	}
+</style>
+</head>
+<body>
+<div>
+	<textarea id="yitaqi"></textarea> <br>
+	<input type="text" id="name"/> <br>
+	<input type="text" id="age"/> <br>
+	<input type="text" id="country"/> <br>
+	<input type="text" id="addr"/> <br>
+	
+	<button onclick="save2Local()" class="btn">save</button>
+	<button onclick="clearByKey()" class="btn">clear</button>
+	<button onclick="clearAll()" class="btn">clearAll</button>
+	<button onclick="get()" class="btn">get</button>
+</div>
+</body>
+<script>
+
+	// local storage 可用大小为5m
+	function save2Local() {
+		var yitaqi = document.getElementById("yitaqi").value;
+		var name = document.getElementById("name").value;
+		var age = document.getElementById("age").value;
+		var country = document.getElementById("country").value;
+		var addr = document.getElementById("addr").value;
+		var val = {"yitaqi" : yitaqi, "name" : name, "age" : age, "country" : country, "addr" : addr};
+		var valStr = JSON.stringify(val);
+		localStorage.setItem("yitaqi", valStr);
+	}
+	
+	function clearByKey() {
+		localStorage.removeItem("yitaqi");
+	}
+	
+	function clearAll() {
+		localStorage.clear();
+	}
+	
+	function get() {
+		var valStr = localStorage.getItem("yitaqi");
+		if (valStr == null) {
+			alert("没有缓存数据");
+			return ;
+		}
+		var val = JSON.parse(valStr);
+		document.getElementById("yitaqi").value = val.yitaqi;
+		document.getElementById("name").value = val.name;
+		document.getElementById("age").value = val.age;
+		document.getElementById("country").value = val.country;
+		document.getElementById("addr").value = val.addr;
+	}
+</script>
+</html>
