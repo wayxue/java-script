@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>date 2 String</title>
+<link rel="stylesheet" type="text/css" href="../css/basic.css">
+</head>
+<body>
+<span>date : </span><input id="date" type="text"/>
+<button onclick="putVal(30)" class="btn">a month ago</button>
+<button onclick="putVal(1)" class="btn">a day ago</button>
+</body>
+<script>
+
+	function putVal(num) {
+		var currentDate = new Date();
+		var date = new Date(currentDate-num*24*3600*1000);
+		var dateStr = date2String(date);
+		document.getElementById("date").value = dateStr;
+	}
+	function date2String(date) { 
+		  var year = date.getFullYear(); 
+		  var month =(date.getMonth() + 1).toString(); 
+		  var day = (date.getDate()).toString();  
+		  if (month.length == 1) { 
+		      month = "0" + month; 
+		  }
+		  if (day.length == 1) { 
+		      day = "0" + day; 
+		  }
+		  var dateTime = year + month + day;
+		  return dateTime;
+	}
+</script>
+
+</html>
